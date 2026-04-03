@@ -7,9 +7,7 @@ def cache(func: Callable) -> Callable:
     @functools.wraps(func)
 
     def wrapper(*args, **kwargs) -> Callable:
-        if isinstance(kwargs.values(), (list, dict, set)):
-           return "Cannot work with mutable data types"
-     
+
         key = (args, tuple(sorted(kwargs.items())))
 
         if key in cache_dict:
