@@ -9,13 +9,13 @@ def cache(func: Callable) -> Callable:
     def wrapper(*args, **kwargs) -> Callable:
         if isinstance(kwargs.values(), (list, dict, set)):
            return "Cannot work with mutable data types"
-        
+     
         key = (args, tuple(sorted(kwargs.items())))
 
         if key in cache_dict:
             print("Getting from cache")
             return cache_dict[key]
-        
+    
         print("Calculating new result")
         result = func(*args, **kwargs)
         cache_dict[key] = result
