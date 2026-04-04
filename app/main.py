@@ -4,8 +4,8 @@ from typing import Callable
 
 def cache(func: Callable) -> Callable:
     cache_dict = {}
-    @functools.wraps(func)
 
+    @functools.wraps(func)
     def wrapper(*args, **kwargs) -> Callable:
         key = (args, tuple(sorted(kwargs.items())))
         if key in cache_dict:
